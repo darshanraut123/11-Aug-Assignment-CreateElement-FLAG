@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+
+
+
+    <script>
+        myCreateElement = (element, attr, prop) => {
+            let elem = document.createElement(element);
+            if(attr!=undefined)
+            elem.setAttribute(attr, prop);
+            return elem;
+        }
+        var elem = myCreateElement("div", "class", "container-fluid full");
+        document.body.append(elem);
+        elem = myCreateElement("div", "class", "row");
+        (document.getElementsByClassName("container-fluid")[0]).append(elem);
+        elem = myCreateElement("div", "class", "col-md navbar");
+        document.querySelector(".row").append(elem);
+        elem = myCreateElement("h2", "style", "font-weight: bolder;");
+        elem.innerText = "Where in the world?";
+        document.querySelector(".navbar").append(elem);
+        elem = myCreateElement("div", "class", "heading");
+        document.querySelector(".navbar").append(elem);
+        elem = myCreateElement("img", "src", "nightmode.png");
+        document.querySelector(".heading").append(elem);
+        elem = myCreateElement("span");
+        elem.innerText = "Dark Mode"
+        document.querySelector(".heading").append(elem);
+
+        elem = myCreateElement("div", "class","container");
+        document.querySelector("body").append(elem);
+
+        elem = myCreateElement("div", "class", "row mainContent");
+        document.querySelector(".container").append(elem);
+
+
+
+        let countriesInfo = [
+  {
+    no:1,
+    name: "India",
+    population: " 1,394,975,829",
+    region: "Asia",
+    flag:
+      "https://upload.wikimedia.org/wikipedia/commons/7/7b/India_flag_300.png",
+    capital: "New delhi"
+  },
+  {
+    no:2,
+    name: "Germany",
+    population: "81,770,900",
+    region: "Europe",
+    flag:
+      "https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/1200px-Flag_of_Germany.svg.png",
+    capital: "Berlin"
+  },
+  {
+    no:3,
+    name: "USA",
+    population: "323,947,000",
+    region: "Americas",
+    flag:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/640px-Flag_of_the_United_States.svg.png",
+    capital: "Washington D.C"
+  },
+  {
+    no:4,
+    name: "Brazil",
+    population: "206,135,893",
+    region: "Americas",
+    flag:
+      "https://upload.wikimedia.org/wikipedia/commons/0/01/Brazil_flag_300.png",
+    capital: "Brasilia"
+  },
+  
+]
+countriesInfo.forEach(country=>{
+
+
+    elem = myCreateElement("div", "class","col-md-3");
+        document.querySelector(".mainContent").append(elem);
+        elem = myCreateElement("div", "class","banner");
+        document.querySelector(`.mainContent div[class*=col]:not(div[class*='myArea']):nth-child(${country.no})`).append(elem);
+        elem = myCreateElement("div", "class","row");
+        elem.setAttribute("name","topPart");
+        (document.querySelectorAll(`div.mainContent div.banner:nth-child(1)`))[`${country.no-1}`].append(elem);
+        elem = myCreateElement("div", "class","row");
+        elem.setAttribute("name","botPart");
+        (document.querySelectorAll(`div.mainContent div.banner:nth-child(1)`))[`${country.no-1}`].append(elem);
+        elem = myCreateElement("div", "class",`col-md myArea`);
+        elem.setAttribute("style",`background-image: url(${country.flag})`);
+        (document.querySelectorAll("[name*='topPart']:nth-child(1)"))[`${country.no-1}`].append(elem);
+        elem = myCreateElement("div", "class","myContent");
+        (document.querySelectorAll("[name*='botPart']:nth-child(2)"))[`${country.no-1}`].append(elem);
+        elem = myCreateElement("strong",);
+        elem.innerText=`${country.name}`;
+        (document.querySelectorAll("div.myContent"))[`${country.no-1}`].append(elem);
+        elem = myCreateElement("p",);
+        elem.innerText=`Population: ${country.population}`;
+        (document.querySelectorAll("div.myContent"))[`${country.no-1}`].append(elem);
+        elem = myCreateElement("p",);
+        elem.innerText=`Region: ${country.region}`;
+        (document.querySelectorAll("div.myContent"))[`${country.no-1}`].append(elem);
+        elem = myCreateElement("p",);
+        elem.innerText=`Capital: ${country.capital}`;
+        (document.querySelectorAll("div.myContent"))[`${country.no-1}`].append(elem);
+});
+
+
+
+    
+    </script>
+</body>
+
+
+</html>
